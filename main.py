@@ -9,10 +9,11 @@ from correction import correct_perspective
 # Ruta de la imagen de prueba (de mas facil a menos)
 # image_path = './plates/test/5126HVL.png' 
 # image_path = './plates/test/1033IR.png'
-image_path = './plates/test/AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
+# image_path = './plates/test/AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
 # image_path = './plates/test/DANKE82.png'  # Esta por algun motivo la desordena
 # image_path = './plates/test/EH577PH.jpg'  # Esta tambien
 # image_path = './plates/test/EQ725QJ.jpg'   # Esta tambien
+image_path = './plates/test/SLF9995.png'
 
 image = cv2.imread(image_path)
 if image is None:
