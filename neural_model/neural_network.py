@@ -1,11 +1,12 @@
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten, Dropout
+from tensorflow.keras.regularizers import l2
 
 # Crear modelo
 model = Sequential([
     Flatten(input_shape=(28, 28)),  # Convertir matriz 28x28 en vector 784
-    Dense(128, activation='relu'),  # Capa oculta con 128 neuronas
+    Dense(128, activation='relu', kernel_regularizer=l2(0.01)),  # Capa oculta con 128 neuronas
     Dropout(0.2),                   # Dropout
     Dense(64, activation='relu'),   # Capa oculta con 64 neuronas
     Dense(36, activation='softmax') # Capa de salida con 36 clases

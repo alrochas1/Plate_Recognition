@@ -1,0 +1,12 @@
+services:
+  tensorflow:
+    image: tensorflow/tensorflow:2.14.0-gpu
+    runtime: nvidia
+    container_name: tensorflow_gpu
+    volumes:
+      - .:/app                   # Monta el directorio actual como /app en el contenedor
+    working_dir: /app            # Establece el directorio de trabajo dentro del contenedor
+    stdin_open: true             # Mantiene el contenedor abierto para entrada
+    tty: true 
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all

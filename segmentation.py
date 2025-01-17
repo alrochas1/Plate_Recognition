@@ -114,7 +114,6 @@ def segment_characters(image):
         plt.axis('off')
     plt.suptitle('Caracteres Segmentados')
     plt.tight_layout()
-    plt.show()
     
     return sorted
 
