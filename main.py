@@ -26,9 +26,13 @@ processed_image = preprocess_image(image)
 characters = segment_characters(processed_image)
 # corrected = correct_perspective(characters)
 
+
 # Cargar el modelo guardado y los datos
 model = tf.keras.models.load_model('./neural_model/nn_model.keras')
 classes = list(map(str, range(10))) + [chr(i) for i in range(ord('A'), ord('Z') + 1)]
+# plt.figure()
+# plt.imshow(characters[0], cmap='gray')
+# plt.show()
 
 # Reconocer caracteres
 plate_number = ""

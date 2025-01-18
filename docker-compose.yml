@@ -1,6 +1,9 @@
 services:
   tensorflow:
-    image: tensorflow/tensorflow:2.14.0-gpu
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: tensorflow/tensorflow:2.14.0-gpu
     runtime: nvidia
     container_name: tensorflow_gpu
     volumes:
