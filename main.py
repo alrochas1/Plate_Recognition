@@ -1,4 +1,5 @@
 import cv2
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -9,14 +10,16 @@ from correction import correct_perspective
 
 
 # Ruta de la imagen de prueba (de mas facil a menos)
-image_path = './plates/test/5126HVL.png' 
-# image_path = './plates/test/1033IR.png'
-# image_path = './plates/test/AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
-# image_path = './plates/test/DANKE82.png'  # Esta por algun motivo la desordena
-# image_path = './plates/test/EH577PH.jpg'  # Esta tambien
-# image_path = './plates/test/EQ725QJ.jpg'   # Esta tambien
-# image_path = './plates/test/SLF9995.png'
+folder_path = "./plates/test"
+# file_name = "5126HVL.png"
+file_name = '1033IR.png'
+# file_name = 'AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
+# file_name = 'DANKE82.png'  # Esta por algun motivo la desordena
+# file_name = 'EH577PH.jpg'  # Esta tambien
+# file_name = 'EQ725QJ.jpg'   # Esta tambien
+# file_name = 'SLF9995.png'
 
+image_path = os.path.join(folder_path, file_name)
 image = cv2.imread(image_path)
 if image is None:
     raise ValueError("No se pudo cargar la imagen. Verifica la ruta.")
@@ -27,12 +30,11 @@ characters = segment_characters(processed_image)
 # corrected = correct_perspective(characters)
 
 
-# Cargar el modelo guardado y los datos
+######################################################################################
+
+# Cargar el modelo guardado
 model = tf.keras.models.load_model('./neural_model/nn_model.keras')
 classes = list(map(str, range(10))) + [chr(i) for i in range(ord('A'), ord('Z') + 1)]
-# plt.figure()
-# plt.imshow(characters[0], cmap='gray')
-# plt.show()
 
 # Reconocer caracteres
 plate_number = ""
@@ -46,7 +48,14 @@ for char_img in characters:
     plate_number += classes[predicted_class]
 
 
-print(f"Número de matrícula reconocido: {plate_number}")
+# Muestra resultados
+real_number, _ = os.path.splitext(file_name)
+print(f"Numero de matricula Real: {real_number}")
+print(f"Número de matrícula Reconocido: {plate_number}")
+if real_number == plate_number:
+    print("Matricula OK")
+else:
+    print("Matricula INCORRECTA")
 
 plt.show()
 

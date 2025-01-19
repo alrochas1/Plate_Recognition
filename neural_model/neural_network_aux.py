@@ -3,6 +3,22 @@ import numpy as np
 import cv2
 import random
 
+import aux
+# import matplotlib.pyplot as plt
+
+
+def process_image(image):
+    # Aplicar Otsu
+    _, binary = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    
+    # Esto no es muy eficiente pero funciona
+    binary = cv2.bitwise_not(binary)
+    char = aux.normalize(binary)
+    char = cv2.bitwise_not(char)
+
+    return char
+
+
 def load_images(mode, data_dir, target_size=(28, 28)):
 
     X = []
@@ -17,13 +33,20 @@ def load_images(mode, data_dir, target_size=(28, 28)):
                 file_path = os.path.join(folder_path, file_name)
                 img = cv2.imread(file_path, cv2.IMREAD_GRAYSCALE)
                 if img is not None:
-                    img_resized = cv2.resize(img, target_size, interpolation=cv2.INTER_AREA)
+                    img_processed = process_image(img)
+                    img_resized = cv2.resize(img_processed, target_size, interpolation=cv2.INTER_AREA)
                     img_normalized = img_resized / 255.0
                     X.append(img_normalized)
                     Y.append(label_map[label])
+                    # titles = ['Original', 'Procesada']
+                    # images = [img, img_normalized]
+                    # aux.plot_images(images, titles)
+                    # plt.show()
 
     X = np.array(X, dtype=np.float32)
     Y = np.array(Y, dtype=np.int32)
+
+
 
     if mode == "test":
         print("Cargando Datos de Prueba ...")

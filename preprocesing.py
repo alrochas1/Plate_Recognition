@@ -35,18 +35,19 @@ def show_histograms(before, after):
 def preprocess_image(image):
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+    gaussian = cv2.GaussianBlur(gray, (5, 5), 0)
+    median = cv2.medianBlur(gray, 3)
 
     clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(20, 20))
-    enhanced = clahe.apply(blurred)
+    enhanced = clahe.apply(median)
 
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    morphed = cv2.morphologyEx(blurred, cv2.MORPH_OPEN, kernel)
+    morphed = cv2.morphologyEx(median, cv2.MORPH_OPEN, kernel)
 
 
     # Mostrar los resultados
-    titles = ['Grises', 'Suavizada', 'Morfed']
-    images = [gray, blurred, morphed]
+    titles = ['Grises', 'Gaussiana', 'Mediana']
+    images = [gray, gaussian, median]
     
     aux.plot_images(images, titles)
 
@@ -60,6 +61,6 @@ def preprocess_image(image):
 
     plt.tight_layout()
     
-    return gray
+    return median
 
 
