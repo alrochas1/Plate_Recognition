@@ -4,19 +4,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from preprocesing import preprocess_image
-from segmentation import segment_characters
 from correction import correct_image
+from segmentation import segment_characters
 
 
 # Ruta de la imagen de prueba (de mas facil a menos)
 folder_path = "./plates/test"
-file_name = "5126HVL.png"
-file_name = '1033IR.png'
+file_name = "5126HVL.png"   # OK
+# file_name = '1033IR.png'    # OK
 # file_name = 'AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
-# file_name = 'DANKE82.png'  # Ya esta ordenada (no funciona la NN, seguramente porque esta girada)
-# file_name = 'EH577PH.jpg' 
+# file_name = 'DANKE82.png'  # OK (falla la NN con la E)
+# file_name = 'EH577PH.jpg' # No la recorta bien, se come la primera H
 # file_name = 'EQ725QJ.jpg'
-# file_name = 'SLF9995.png'
+# file_name = '41JA34.png'
 
 image_path = os.path.join(folder_path, file_name)
 image = cv2.imread(image_path)
@@ -31,7 +31,7 @@ characters = segment_characters(corrected_image)
 
 ######################################################################################
 
-GUESS_NUMBERS = True      # Cambiar esto para que use la NN (quitar para hacer pruebas)
+GUESS_NUMBERS = False      # Cambiar esto para que use la NN (quitar para hacer pruebas)
 if GUESS_NUMBERS:
     import tensorflow as tf
     # Cargar el modelo guardado

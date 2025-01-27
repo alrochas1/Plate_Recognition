@@ -8,11 +8,11 @@ import aux
 target_size=(258, 57)
 
 
-def segment_characters(image):
+def segment_characters(image, show=True):
 
     normalized_plate = cv2.resize(image, target_size, interpolation=cv2.INTER_AREA)
 
-    # Aplicar Otsu
+    # # Aplicar Otsu
     _, binary = cv2.threshold(normalized_plate, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     binary = cv2.bitwise_not(binary)    # Hace falta invertirlo para la siguiente parte
 
@@ -20,7 +20,7 @@ def segment_characters(image):
     num_labels, _, stats, _ = cv2.connectedComponentsWithStats(binary, connectivity=8)
     
     # Filtrar regiones
-    min_area = 110; max_area = 850
+    min_area = 185; max_area = 850
     min_ratio = 0.05; max_ratio = 0.9   # No hay letras mas anchas que altas
     char_images = []
 
@@ -41,20 +41,21 @@ def segment_characters(image):
     char_images.sort(key=itemgetter(0))
     sorted = [char for _, char in char_images]
 
-    # Mostrar los resultados
-    titles = ['Normalizada', 'Otsu']
-    images = [normalized_plate, binary]
-    aux.plot_images(images, titles)
-    
+    if show:
+        # Mostrar los resultados
+        titles = ['Normalizada', 'Otsu']
+        images = [normalized_plate, binary]
+        aux.plot_images(images, titles)
+        
 
-    # Mostrar caracteres segmentados
-    plt.figure(figsize=(10, 2))
-    for i, j in enumerate(sorted):
-        plt.subplot(1, len(sorted), i + 1)
-        plt.imshow(j, cmap='gray')
-        plt.axis('off')
-    plt.suptitle('Caracteres Segmentados')
-    plt.tight_layout()
+        # Mostrar caracteres segmentados
+        plt.figure(figsize=(10, 2))
+        for i, j in enumerate(sorted):
+            plt.subplot(1, len(sorted), i + 1)
+            plt.imshow(j, cmap='gray')
+            plt.axis('off')
+        plt.suptitle('Caracteres Segmentados')
+        plt.tight_layout()
     
     return sorted
 

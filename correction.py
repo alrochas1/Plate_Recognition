@@ -75,7 +75,7 @@ def correct_perspective(image):
 
 ##############################################################
 
-def correct_image(image):
+def correct_image(image, show=True):
 
     # Girar la imagen
     angle, edges = detect_rotation_angle(image)
@@ -84,9 +84,10 @@ def correct_image(image):
     # Corregir la perspectiva si es necesario
     corrected_perspective = correct_perspective(corrected_image)
 
-    # Mostrar los resultados
-    titles = ['Canny', 'Rotada', 'Corregida']
-    images = [edges, corrected_image, corrected_perspective]
-    aux.plot_images(images, titles)
+    if show:
+        # Mostrar los resultados
+        titles = ['Canny', 'Rotada', 'Corregida']
+        images = [edges, corrected_image, corrected_perspective]
+        aux.plot_images(images, titles)
 
     return corrected_perspective

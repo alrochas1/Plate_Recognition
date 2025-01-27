@@ -1,0 +1,39 @@
+Archivo: DN419NG.jpg, Reconocido: L79GJ, Estado: FALLO NN
+Archivo: AFZ8924.png, Reconocido: AFZB324, Estado: FALLO NN
+Archivo: HKH2245.png, Reconocido: HKHZZ45, Estado: FALLO NN
+Archivo: 4969ZD56.png, Reconocido: A3E5ZD5E, Estado: FALLO NN
+Archivo: BA884XN.jpg, Reconocido: BA, Estado: FALLO SEGMENTACION
+Archivo: BT254HA.jpg, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: EC377VM.jpg, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: FS827VN.jpg, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: SG1579.png, Reconocido: SG1579G, Estado: FALLO NN
+Archivo: HROD819.JPG, Reconocido: HROD819, Estado: OK
+Archivo: PEM2363.png, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: 5951FPF.png, Reconocido: 595FPF, Estado: FALLO NN
+Archivo: ANK7444.png, Reconocido: ANK7444, Estado: OK
+Archivo: DP92OCN.png, Reconocido: DP920CN, Estado: FALLO NN
+Archivo: DD178TV.jpg, Reconocido: V, Estado: FALLO SEGMENTACION
+Archivo: NDNH12.png, Reconocido: NDNHI2, Estado: FALLO NN
+Archivo: 45XM6.png, Reconocido: 45X6, Estado: FALLO NN
+Archivo: FC337JE.jpg, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: SGE6783.png, Reconocido: SGE6783, Estado: OK
+Archivo: ZDT923.png, Reconocido: LDT92ID, Estado: FALLO NN
+Archivo: SHB6665.png, Reconocido: S5665, Estado: FALLO NN
+Archivo: VJ8593.png, Reconocido: VJ8593, Estado: OK
+Archivo: QCE908.png, Reconocido: 0CE908, Estado: FALLO NN
+Archivo: FQ032EC.jpg, Reconocido: F0032EC, Estado: FALLO NN
+Archivo: CR214ZQ.jpg, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: BRL702.png, Reconocido: BRL70Z, Estado: FALLO NN
+Archivo: ESS1535.png, Reconocido: ES, Estado: FALLO SEGMENTACION
+Archivo: GO6600H.png, Reconocido: G0660DH, Estado: FALLO NN
+Archivo: LL2134.png, Reconocido: LL2, Estado: FALLO SEGMENTACION
+Archivo: FS028DP.jpg, Reconocido: IFSDZBDPF, Estado: FALLO NN
+Archivo: MA877AA.png, Reconocido: 8L877AA, Estado: FALLO NN
+Archivo: BMJ9855.png, Reconocido: BJ9855, Estado: FALLO NN
+Archivo: ZZ7099.png, Reconocido: , Estado: FALLO SEGMENTACION
+Archivo: EYA4798_1.png, Reconocido: ETA479, Estado: FALLO SEGMENTACION
+Archivo: VD5886Z.png, Reconocido: Z, Estado: FALLO SEGMENTACION
+Archivo: DQ040VP.jpg, Reconocido: W, Estado: FALLO SEGMENTACION
+Archivo: G0CIAPA.png, Reconocido: G0CAPA, Estado: FALLO NN
+Archivo: AV812LT.png, Reconocido: AV812LT, Estado: OK
+Archivo: HHRD41.JPG, Reconocido: HRD41, Estado: FALLO NN

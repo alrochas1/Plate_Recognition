@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import aux
 
 
-def preprocess_image(image):
+def preprocess_image(image, show=True):
 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
@@ -22,20 +22,21 @@ def preprocess_image(image):
 
 
     # Mostrar los resultados
-    titles = ['Grises', 'Gaussiana', 'Mediana']
-    images = [normalized, gaussian, median]
-    
-    aux.plot_images(images, titles)
+    if show:
+        titles = ['Grises', 'Gaussiana', 'Mediana']
+        images = [normalized, gaussian, median]
+        
+        aux.plot_images(images, titles)
 
-    # Mostrar histogramas
-    plt.figure(figsize=(10, 5))
-    plt.hist(gray.ravel(), bins=256, range=[0, 256], color='blue', alpha=0.7, label='Sin Ecualizar')
-    plt.title('Histograma (Sin Ecualizar)')
-    plt.xlabel('Intensidad de pixel')
-    plt.ylabel('Frecuencia')
-    plt.legend()
+        # Mostrar histogramas
+        plt.figure(figsize=(10, 5))
+        plt.hist(gray.ravel(), bins=256, range=[0, 256], color='blue', alpha=0.7, label='Sin Ecualizar')
+        plt.title('Histograma (Sin Ecualizar)')
+        plt.xlabel('Intensidad de pixel')
+        plt.ylabel('Frecuencia')
+        plt.legend()
 
-    plt.tight_layout()
+        plt.tight_layout()
     
     return median
 
