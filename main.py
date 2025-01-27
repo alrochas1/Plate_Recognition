@@ -17,6 +17,8 @@ file_name = "5126HVL.png"   # OK
 # file_name = 'EH577PH.jpg' # No la recorta bien, se come la primera H
 # file_name = 'EQ725QJ.jpg'
 # file_name = '41JA34.png'
+file_name = 'KYM3141.png'   # Analizar porque no segmenta esto
+
 
 image_path = os.path.join(folder_path, file_name)
 image = cv2.imread(image_path)
@@ -31,7 +33,7 @@ characters = segment_characters(corrected_image)
 
 ######################################################################################
 
-GUESS_NUMBERS = False      # Cambiar esto para que use la NN (quitar para hacer pruebas)
+GUESS_NUMBERS = True    # Cambiar esto para que use la NN (quitar para hacer pruebas)
 if GUESS_NUMBERS:
     import tensorflow as tf
     # Cargar el modelo guardado
