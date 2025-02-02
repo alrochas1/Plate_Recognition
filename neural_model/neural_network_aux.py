@@ -4,12 +4,16 @@ import cv2
 import random
 
 import aux
+from neural_model.neural_network import res
 # import matplotlib.pyplot as plt
 
 
 def process_image(image):
+
+    median = cv2.medianBlur(image, 3)
+
     # Aplicar Otsu
-    _, binary = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    _, binary = cv2.threshold(median, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     
     # Esto no es muy eficiente pero funciona
     binary = cv2.bitwise_not(binary)
@@ -19,12 +23,12 @@ def process_image(image):
     return char
 
 
-def load_images(mode, data_dir, target_size=(28, 28)):
+def load_images(mode, data_dir, target_size=(res, res)):
 
     X = []
     Y = []
     class_labels = sorted(os.listdir(data_dir))  # Lista ordenada de carpetas (clases)
-    label_map = {label: idx for idx, label in enumerate(class_labels)}  # Mapa clase -> índice
+    label_map = {label: idx for idx, label in enumerate(class_labels)}
 
     for label in class_labels:
         folder_path = os.path.join(data_dir, label)

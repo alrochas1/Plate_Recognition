@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import cv2
 
+from neural_model.neural_network import res
+
 def plot_images(images, titles):
 
     plt.figure(figsize=(15, 5))
@@ -15,7 +17,7 @@ def plot_images(images, titles):
 
 
 # Para normalizar los caracteres sin deformarlos
-def normalize(char_img, size=(28, 28)):
+def normalize(char_img, size=(res, res)):
 
     # Mantener proporciones originales
     h, w = char_img.shape
@@ -30,7 +32,7 @@ def normalize(char_img, size=(28, 28)):
     
     if (new_h == 0) or (new_h == 0):
         print("La imagen es demasiado alargada (no deberia haber pasado los filtros previos)")
-        char = cv2.resize(char_img, (28, 28), interpolation=cv2.INTER_AREA)
+        char = cv2.resize(char_img, size, interpolation=cv2.INTER_AREA)
         return char
     else:
         resized = cv2.resize(char_img, (new_w, new_h), interpolation=cv2.INTER_AREA)

@@ -40,6 +40,7 @@ def correct_perspective(image):
     epsilon = 0.02 * cv2.arcLength(largest_contour, True)
     approx = cv2.approxPolyDP(largest_contour, epsilon, True)
     
+    
     if len(approx) == 4:
         # Ordenar los puntos para la transformación de perspectiva
         rect = np.zeros((4, 2), dtype="float32")
@@ -83,6 +84,10 @@ def correct_image(image, show=True):
 
     # Corregir la perspectiva si es necesario
     corrected_perspective = correct_perspective(corrected_image)
+
+    # cv2.imwrite("./images/edges.jpg", edges)
+    # cv2.imwrite("./images/rotated.jpg", corrected_image)
+    # cv2.imwrite("./images/perspective.jpg", corrected_perspective)
 
     if show:
         # Mostrar los resultados

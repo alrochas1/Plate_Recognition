@@ -7,17 +7,19 @@ from preprocesing import preprocess_image
 from correction import correct_image
 from segmentation import segment_characters
 
+from neural_model.neural_network import res
+
 
 # Ruta de la imagen de prueba (de mas facil a menos)
 folder_path = "./plates/test"
 file_name = "5126HVL.png"   # OK
-# file_name = '1033IR.png'    # OK
+file_name = '1033IR.png'    # OK
+file_name = 'SG49711.png'   # OK
 # file_name = 'AL193VP.jpg'  # Aqui los numeros si, las letras se juntan
-# file_name = 'DANKE82.png'  # OK (falla la NN con la E)
+# file_name = 'DANKE82.png'  # OK (falla la NN con la Z)
 # file_name = 'EH577PH.jpg' # No la recorta bien, se come la primera H
 # file_name = 'EQ725QJ.jpg'
-# file_name = '41JA34.png'
-file_name = 'KYM3141.png'   # Analizar porque no segmenta esto
+
 
 
 image_path = os.path.join(folder_path, file_name)
@@ -44,7 +46,7 @@ if GUESS_NUMBERS:
     plate_number = ""
     for char_img in characters:
         char_img = char_img / 255.0
-        char_img = char_img.reshape(1, 28, 28, 1)
+        char_img = char_img.reshape(1, res, res, 1)
 
         # Predecir la clase del carácter
         prediction = model.predict(char_img)

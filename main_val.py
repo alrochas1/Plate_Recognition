@@ -8,6 +8,7 @@ from preprocesing import preprocess_image
 from correction import correct_image
 from segmentation import segment_characters
 
+from neural_model.neural_network import res
 
 folder_path = "./plates/train"
 
@@ -45,7 +46,7 @@ with open(f"results.txt", "w") as results_file:
         plate_number = ""
         for char_img in characters:
             char_img = char_img / 255.0
-            char_img = char_img.reshape(1, 28, 28, 1)   # Esto en teoria no hace falta
+            char_img = char_img.reshape(1, res, res, 1)   # Esto en teoria no hace falta
 
             prediction = model.predict(char_img, verbose=0)
             predicted_class = np.argmax(prediction)
@@ -58,7 +59,7 @@ with open(f"results.txt", "w") as results_file:
             correct_plates += 1
             status = "OK"
         else:
-            if len(plate_number) < len(real_number)-2:  # No se reconocen varios caracteres
+            if len(plate_number) != len(real_number):  # No se reconocen algunos caracteres
                 incorrect_plates += 1
                 status = "FALLO SEGMENTACION"
             else:  # Reconocimiento parcial
@@ -77,8 +78,5 @@ print(f"Matrículas correctas: {correct_plates}")
 print(f"Porcentaje de acierto: {(correct_plates / total_plates) * 100:.2f}%")
 print(f"Matrículas sin reconocimiento: {incorrect_plates} ({(incorrect_plates / total_plates) * 100:.2f}%)")
 print(f"Matrículas con reconocimiento parcial: {partial_plates} ({(partial_plates / total_plates) * 100:.2f}%)")
-print("\nDetalles por matrícula:")
-# for result in results:
-#     print(f"Archivo: {result[0]}, Reconocido: {result[1]}, Estado: {result[2]}")
 
 # plt.show() # No se muestran los resultados porque serian cientos de ventanas
